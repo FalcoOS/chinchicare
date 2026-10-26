@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#fff8ef">
+  <meta name="description" content="ChinchiCare hilft dir, deine Chinchillas einfach, sicher und liebevoll zu versorgen.">
+  <title>ChinchiCare · Gut versorgt, ganz einfach</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="ChinchiCare Startseite">
+      <span class="brand-mark">🐭</span><span><b>ChinchiCare</b><small id="brandSub">Kleine Pfoten. Gute Pflege.</small></span>
+    </a>
+    <div class="top-actions">
+      <label class="lang-picker" aria-label="Language">
+        <span>🌐</span><select id="languageSelect" aria-label="Sprache auswählen"><option value="de">Deutsch</option><option value="en">English</option></select>
+      </label>
+      <button class="avatar-btn" id="profileButton" title="Profil">♡</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="authScreen" class="auth-layout">
+      <div class="auth-hero">
+        <div class="eyebrow" data-i18n="authEyebrow">DEIN CHINCHILLA-ALLTAG, LEICHTER GEMACHT</div>
+        <h1 data-i18n="authTitle">Gute Pflege muss<br><span>nicht kompliziert</span> sein.</h1>
+        <p data-i18n="authText">Ein klarer Tagesplan, verständliche Tipps und die wichtigsten Werte an einem Ort. Du weißt sofort, was heute wichtig ist.</p>
+        <div class="hero-pills"><span>✓ <span data-i18n="pill1">Tagesplan in 30 Sekunden</span></span><span>✓ <span data-i18n="pill2">Klima im Blick</span></span><span>✓ <span data-i18n="pill3">Wissen ohne Fachchinesisch</span></span></div>
+        <div class="hero-mascot"><div class="sparkle s1">✦</div><div class="sparkle s2">✧</div><div class="mascot">🐭</div><div class="speech" data-i18n="speech">Hey! Ich helfe dir dran zu denken. ♡</div></div>
+      </div>
+      <div class="auth-card card">
+        <div class="auth-tabs"><button class="auth-tab active" data-auth-mode="login" data-i18n="loginTab">Anmelden</button><button class="auth-tab" data-auth-mode="signup" data-i18n="signupTab">Konto erstellen</button></div>
+        <h2 id="authTitleSmall" data-i18n="welcomeBack">Schön, dass du da bist!</h2>
+        <p class="muted" id="authDescription" data-i18n="loginDescription">Melde dich an, damit deine Einträge auf deinen Geräten verfügbar bleiben.</p>
+        <form id="authForm">
+          <label class="field-label" for="email" data-i18n="emailLabel">E-Mail-Adresse</label>
+          <input id="email" type="email" autocomplete="email" placeholder="du@beispiel.de" required>
+          <label class="field-label" for="password" data-i18n="passwordLabel">Passwort</label>
+          <input id="password" type="password" autocomplete="current-password" minlength="6" placeholder="Mindestens 6 Zeichen" required>
+          <button class="btn btn-primary full" id="authSubmit" type="submit" data-i18n="loginButton">Anmelden <span>→</span></button>
+        </form>
+        <button class="btn btn-soft full" id="guestButton" data-i18n="guestButton">Erst einmal ohne Konto ausprobieren</button>
+        <p class="fineprint" data-i18n="privacyNote">Deine Einträge bleiben privat. Im Gastmodus werden sie auf diesem Gerät gespeichert.</p>
+        <p id="authMessage" class="notice" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <section id="appScreen" class="hidden">
+      <section class="welcome-banner">
+        <div class="welcome-copy"><div class="eyebrow" data-i18n="todayLabel">DEIN KLEINER PFOTEN-CHECK</div><h1><span data-i18n="hello">Hallo!</span> <span id="welcomeName" data-i18n="friend">Chinchilla-Freund</span> <span class="wave">✦</span></h1><p data-i18n="welcomeText">Ein paar kleine Checks helfen dir, große Probleme früh zu erkennen.</p><div class="banner-actions"><button class="btn btn-primary" data-jump="today" data-i18n="startToday">Heutigen Check starten →</button><button class="btn btn-glass" data-jump="care" data-i18n="seePlan">Pflegeplan ansehen</button></div></div>
+        <div class="banner-art"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="big-chinchilla">🐭</div><div class="floating-note note-one">💧 <span data-i18n="waterFresh">Frisches Wasser</span></div><div class="floating-note note-two">🌡️ <span data-i18n="climateSafe">Klima checken</span></div></div>
+      </section>
+
+      <section class="quick-stats" id="today">
+        <article class="stat-card"><span class="stat-icon lilac">☀️</span><div><span class="stat-label" data-i18n="todayTasks">Heute erledigt</span><strong><span id="taskCount">0</span><small> / 5</small></strong><div class="progress"><span id="taskProgress"></span></div></div></article>
+        <article class="stat-card"><span class="stat-icon peach">🌡️</span><div><span class="stat-label" data-i18n="roomTemp">Raumtemperatur</span><strong><span id="tempStat">—</span><small> °C</small></strong><span class="tiny-status" id="tempStatus" data-i18n="addTemp">Wert eintragen</span></div></article>
+        <article class="stat-card"><span class="stat-icon mint">⚖️</span><div><span class="stat-label" data-i18n="lastWeight">Letztes Gewicht</span><strong><span id="weightStat">—</span><small> g</small></strong><span class="tiny-status" id="weightStatus" data-i18n="addWeight">Gewicht ergänzen</span></div></article>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading"><div><div class="eyebrow" data-i18n="easyStart">EINFACH LOSLEGEN</div><h2 data-i18n="whatNow">Was ist jetzt wichtig?</h2><p data-i18n="whatNowSub">Die häufigsten Aufgaben direkt griffbereit. Abhaken dauert nur wenige Sekunden.</p></div><span class="heading-sticker">♡</span></div>
+        <div class="dashboard-grid">
+          <article class="card today-card">
+            <div class="card-title-row"><div><span class="mini-icon">✨</span><h3 data-i18n="dailyRoutine">Deine 5-Minuten-Routine</h3></div><span class="tag" data-i18n="dailyTag">TÄGLICH</span></div>
+            <p class="muted" data-i18n="dailyDesc">Ein kurzer Blick auf die Basics gibt Sicherheit. Tippe eine Aufgabe an, sobald sie erledigt ist.</p>
+            <div id="taskList" class="task-list"></div>
+            <div class="task-footer"><span id="taskFooterText" data-i18n="littleSteps">Kleine Schritte zählen. ♡</span><button class="text-btn" id="resetTasks" data-i18n="resetToday">Für heute zurücksetzen</button></div>
+          </article>
+          <article class="card climate-card">
+            <div class="card-title-row"><div><span class="mini-icon">🌤️</span><h3 data-i18n="climateTitle">Ist das Zimmer okay?</h3></div><span class="tag tag-green" data-i18n="climateTag">KLIMA-CHECK</span></div>
+            <p class="muted" data-i18n="climateDesc">Trage Temperatur und Luftfeuchtigkeit ein und erhalte eine leicht verständliche Orientierung.</p>
+            <div class="input-pair"><label><span data-i18n="temperature">Temperatur</span><div class="unit-input"><input id="temperatureInput" type="number" inputmode="decimal" min="-5" max="45" step="0.1" placeholder="z. B. 20"><span>°C</span></div></label><label><span data-i18n="humidity">Luftfeuchte</span><div class="unit-input"><input id="humidityInput" type="number" inputmode="numeric" min="0" max="100" placeholder="z. B. 45"><span>%</span></div></label></div>
+            <button class="btn btn-primary full" id="checkClimate" data-i18n="checkClimate">Klima einschätzen →</button>
+            <div id="climateResult" class="result-box" aria-live="polite"><span class="result-emoji">🍃</span><span data-i18n="climatePlaceholder">Dein Ergebnis erscheint hier.</span></div>
+            <p class="disclaimer" data-i18n="climateDisclaimer">Orientierung, keine tierärztliche Diagnose. Bei Hitze, Atemnot oder auffälligem Verhalten sofort handeln.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading"><div><div class="eyebrow" data-i18n="careBetter">PFLEGE, DIE SICH GUT ANFÜHLT</div><h2 data-i18n="yourChinchillas">Deine Chinchillas</h2><p data-i18n="yourChinchillasSub">Profile, Fotos und Gewichtsverlauf an einem Ort. So fallen Veränderungen eher auf.</p></div><button class="btn btn-soft" id="addPetButton" data-i18n="addPet">+ Tier hinzufügen</button></div>
+        <div id="petGrid" class="pet-grid"></div>
+        <div class="card weight-card">
+          <div class="card-title-row"><div><span class="mini-icon">📈</span><h3 data-i18n="weightJournal">Gewichtstagebuch</h3></div><span class="tag" data-i18n="trackTag">VERLAUF</span></div>
+          <p class="muted" data-i18n="weightDesc">Wiegt dein Tier regelmäßig zur ähnlichen Tageszeit. Ein Trend ist oft hilfreicher als ein einzelner Messwert.</p>
+          <form id="weightForm" class="weight-form"><label><span data-i18n="choosePet">Chinchilla</span><select id="weightPet"></select></label><label><span data-i18n="weightGrams">Gewicht (g)</span><input id="weightInput" type="number" min="1" max="3000" placeholder="z. B. 540" required></label><label><span data-i18n="dateLabel">Datum</span><input id="weightDate" type="date" required></label><button class="btn btn-primary" type="submit" data-i18n="saveWeight">Eintragen +</button></form>
+          <div class="chart-wrap"><canvas id="weightChart" height="150" aria-label="Gewichtsverlauf"></canvas><div id="chartEmpty" class="chart-empty" data-i18n="chartEmpty">Trage mindestens zwei Gewichte ein, um den Verlauf zu sehen.</div></div>
+          <div id="weightHistory" class="weight-history"></div>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading"><div><div class="eyebrow" data-i18n="learnWithoutStress">WISSEN OHNE STRESS</div><h2 data-i18n="careLibrary">Deine Pflege-Bibliothek</h2><p data-i18n="careLibrarySub">Konkrete Antworten auf Fragen, die im Alltag wirklich auftauchen.</p></div><span class="heading-sticker">📚</span></div>
+        <div class="topic-filters" id="topicFilters"><button class="filter active" data-topic="all" data-i18n="allTopics">Alle Themen</button><button class="filter" data-topic="food" data-i18n="foodTopic">Futter</button><button class="filter" data-topic="health" data-i18n="healthTopic">Gesundheit</button><button class="filter" data-topic="home" data-i18n="homeTopic">Zuhause</button><button class="filter" data-topic="behavior" data-i18n="behaviorTopic">Verhalten</button><button class="filter" data-topic="emergency" data-i18n="emergencyTopic">Notfall</button></div>
+        <div id="knowledgeGrid" class="knowledge-grid"></div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading"><div><div class="eyebrow" data-i18n="makeItYours">MACH ES ZU DEINER APP</div><h2 data-i18n="carePlanTitle">Dein Pflegeplan</h2><p data-i18n="carePlanSub">Speichere Routinen, damit du nicht jedes Mal neu überlegen musst.</p></div></div>
+        <div class="plan-grid">
+          <article class="card plan-card"><span class="plan-emoji">🗓️</span><h3 data-i18n="weeklyPlan">Wöchentlicher Überblick</h3><p data-i18n="weeklyDesc">Plane Sandbad, gründliche Reinigung und Vorratscheck in deinem Rhythmus.</p><div class="weekly-items" id="weeklyItems"></div></article>
+          <article class="card plan-card"><span class="plan-emoji">🧺</span><h3 data-i18n="supplyList">Vorratsliste</h3><p data-i18n="supplyDesc">Markiere, was du noch brauchst, bevor es knapp wird.</p><div id="supplyList" class="supply-list"></div><form id="supplyForm" class="inline-add"><input id="supplyInput" maxlength="70" placeholder="z. B. Heu nachkaufen" data-i18n-placeholder="supplyPlaceholder"><button class="btn btn-primary" type="submit">+</button></form></article>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading"><div><div class="eyebrow" data-i18n="helpfulNotScary">VORBEREITET STATT ÜBERFORDERT</div><h2 data-i18n="emergencyTitle">Wenn etwas nicht stimmt</h2><p data-i18n="emergencySub">Bei Chinchillas können sich Probleme schnell verschlimmern. Im Zweifel lieber früh fachkundige Hilfe holen.</p></div></div>
+        <div class="emergency-panel"><div class="emergency-icon">🩺</div><div><h3 data-i18n="emergencyRed">Diese Zeichen sind dringend</h3><p data-i18n="emergencyRedText">Nicht fressen, kaum oder kein Kot, Atemprobleme, starke Teilnahmslosigkeit, Krämpfe, Blutungen oder ein aufgeblähter Bauch gehören sofort tierärztlich abgeklärt.</p></div><div class="emergency-side"><span data-i18n="emergencyTip">Tipp</span><p data-i18n="emergencyTipText">Speichere die Nummer einer chinchilla-erfahrenen Praxis und einer Tierklinik in deinem Handy.</p></div></div>
+      </section>
+
+      <footer class="footer"><span>🐭 <b>ChinchiCare</b></span><span data-i18n="footerText">Ein liebevoller Helfer, kein Ersatz für eine Tierarztpraxis.</span><button id="logoutButton" class="text-btn" data-i18n="logout">Abmelden</button></footer>
+    </section>
+  </main>
+
+  <dialog id="petDialog" class="modal"><form id="petForm" method="dialog"><div class="modal-head"><div><span class="eyebrow" data-i18n="newFriend">NEUER MITBEWOHNER</span><h2 data-i18n="petProfileTitle">Chinchilla-Profil</h2></div><button type="button" class="close-modal" data-close="petDialog">×</button></div><label class="field-label" for="petName" data-i18n="petNameLabel">Name</label><input id="petName" required maxlength="40" placeholder="z. B. Momo"><div class="input-pair"><label><span data-i18n="sexLabel">Geschlecht</span><select id="petSex"><option value="unknown" data-i18n="unknown">Unbekannt</option><option value="female" data-i18n="female">Weiblich</option><option value="male" data-i18n="male">Männlich</option></select></label><label><span data-i18n="birthLabel">Geburtsdatum (optional)</span><input id="petBirth" type="date"></label></div><label class="field-label" for="petPhoto" data-i18n="photoLabel">Foto (optional)</label><input id="petPhoto" type="file" accept="image/*"><p class="fineprint" data-i18n="photoNote">Fotos werden für die App verkleinert, damit sie weniger Speicher brauchen.</p><button class="btn btn-primary full" type="submit" data-i18n="saveProfile">Profil speichern ♡</button></form></dialog>
+  <dialog id="topicDialog" class="modal"><div class="modal-head"><div><span class="eyebrow" data-i18n="careLibrary">PFLEGE-BIBLIOTHEK</span><h2 id="topicDialogTitle"></h2></div><button type="button" class="close-modal" data-close="topicDialog">×</button></div><div id="topicDialogBody" class="topic-detail"></div><button class="btn btn-soft full" data-close="topicDialog" data-i18n="close">Schließen</button></dialog>
+  <dialog id="profileDialog" class="modal"><div class="modal-head"><div><span class="eyebrow" data-i18n="settings">EINSTELLUNGEN</span><h2 data-i18n="profileSettings">Dein Profil</h2></div><button type="button" class="close-modal" data-close="profileDialog">×</button></div><label class="field-label" for="displayName" data-i18n="yourName">Wie sollen wir dich nennen?</label><input id="displayName" maxlength="50" placeholder="Name"><button class="btn btn-primary full" id="saveDisplayName" data-i18n="save">Speichern</button><p class="fineprint" data-i18n="profileNote">Sprache kannst du jederzeit oben rechts ändern.</p></dialog>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
