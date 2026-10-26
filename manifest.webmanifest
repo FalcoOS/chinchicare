@@ -1,0 +1,9 @@
+{
+  "name": "ChinchiCare",
+  "short_name": "ChinchiCare",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#fffaf6",
+  "theme_color": "#fff7f1",
+  "description": "Liebevolle Pflegeorganisation für Chinchillas"
+}
