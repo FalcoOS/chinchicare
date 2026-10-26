@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f4f7f1">
+  <meta name="description" content="ChinchiCare: liebevolle Pflegeplanung und Klima-Check für Chinchillas.">
+  <title>ChinchiCare</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="ChinchiCare Startseite">
+        <span class="brand-mark">✿</span>
+        <span><strong>ChinchiCare</strong><small id="brand-subtitle">Kleine Pfoten, große Fürsorge</small></span>
+      </a>
+      <div class="top-actions">
+        <button id="langBtn" class="icon-btn" aria-label="Sprache wechseln">EN</button>
+        <button id="cloudBtn" class="cloud-btn"><span>☁</span> <span id="cloudBtnText">Cloud anmelden</span></button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="live-dot"></span><span id="todayLabel">DEIN CHINCHILLA-BEREICH</span></div>
+          <h1 id="heroTitle">Für ein gutes<br><em>Chinchilla-Leben.</em></h1>
+          <p id="heroText">Gesundheit im Blick behalten, das Raumklima prüfen und den Alltag liebevoll organisieren.</p>
+          <div class="hero-buttons">
+            <button class="primary-btn" id="addPetHero">＋ <span id="addPetText">Chinchilla hinzufügen</span></button>
+            <button class="secondary-btn" id="jumpClimate">Raumklima prüfen ↓</button>
+          </div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="sun"></div><div class="leaf leaf-a"></div><div class="leaf leaf-b"></div>
+          <div class="art-card">
+            <div class="chinchilla-face"><span class="ear ear-l"></span><span class="ear ear-r"></span><span class="face"></span><span class="eye eye-l"></span><span class="eye eye-r"></span><span class="nose"></span><span class="cheek cheek-l"></span><span class="cheek cheek-r"></span></div>
+            <span class="art-sparkle">✦</span><span class="art-heart">♡</span>
+          </div>
+          <div class="art-caption"><span class="caption-dot"></span><span id="artCaption">Sanfte Pflege, jeden Tag</span></div>
+        </div>
+      </section>
+
+      <section class="stats-grid" aria-label="Übersicht">
+        <article class="stat-card"><div class="stat-icon lilac">♡</div><div><span id="statPetsLabel">Meine Chinchillas</span><strong id="statPets">0</strong><small id="statPetsNote">kleine Persönlichkeiten</small></div></article>
+        <article class="stat-card"><div class="stat-icon mint">⌁</div><div><span id="statWeightLabel">Gewichtseinträge</span><strong id="statWeights">0</strong><small id="statWeightNote">Gesundheit im Blick</small></div></article>
+        <article class="stat-card"><div class="stat-icon peach">✓</div><div><span id="statTasksLabel">Offene Aufgaben</span><strong id="statTasks">0</strong><small id="statTasksNote">Schritt für Schritt</small></div></article>
+      </section>
+
+      <section class="section-block" id="petsSection">
+        <div class="section-heading"><div><span class="eyebrow">01 · <span id="petEyebrow">PERSÖNLICH</span></span><h2 id="petsTitle">Meine Chinchillas</h2><p id="petsDesc">Jedes Tier hat seine eigene kleine Geschichte.</p></div><button class="outline-btn" id="addPetBtn">＋ <span id="addPetBtnText">Tier hinzufügen</span></button></div>
+        <div id="petsGrid" class="pets-grid"></div>
+        <div id="emptyPets" class="empty-state"><span class="empty-emoji">🐭</span><strong id="emptyPetsTitle">Hier beginnt eure Geschichte</strong><p id="emptyPetsText">Füge dein erstes Chinchilla hinzu, um Fotos, Notizen und Gewicht zu verwalten.</p><button class="primary-btn" id="emptyAddBtn">＋ <span id="emptyAddText">Profil erstellen</span></button></div>
+      </section>
+
+      <section class="section-block" id="climateSection">
+        <div class="section-heading"><div><span class="eyebrow">02 · KLIMA-CHECK</span><h2 id="climateTitle">Fühlt sich das Klima gut an?</h2><p id="climateDesc">Trage die Raumwerte ein und erhalte eine Orientierung.</p></div><span class="section-emoji">🌿</span></div>
+        <div class="climate-layout">
+          <div class="climate-form panel">
+            <div class="field"><label for="temperature" id="tempLabel">Raumtemperatur</label><div class="range-value"><strong id="tempValue">20.0 °C</strong><span id="tempHint">Kühler ist sicherer</span></div><input id="temperature" type="range" min="10" max="32" step="0.5" value="20"><div class="range-ends"><span>10 °C</span><span>32 °C</span></div></div>
+            <div class="field"><label for="humidity" id="humidityLabel">Luftfeuchtigkeit</label><div class="range-value"><strong id="humidityValue">45 %</strong><span id="humidityHint">Relative Feuchte</span></div><input id="humidity" type="range" min="10" max="90" step="1" value="45"><div class="range-ends"><span>10 %</span><span>90 %</span></div></div>
+            <button class="primary-btn full-btn" id="checkClimate">Klima bewerten</button>
+            <p class="fine-print" id="climateDisclaimer">Orientierungshilfe, keine tierärztliche Diagnose. Temperatur regelmäßig am Standort des Geheges messen.</p>
+          </div>
+          <div class="climate-result panel" id="climateResult" aria-live="polite">
+            <div class="result-icon" id="resultIcon">❄</div><span class="result-label" id="resultLabel">DEIN KLIMA-CHECK</span><h3 id="resultTitle">Werte prüfen</h3><p id="resultText">Stelle die Regler ein und tippe auf „Klima bewerten“.</p>
+            <div class="meter"><span id="meterFill"></span></div><div class="meter-labels"><span id="meterLow">Kühler</span><span id="meterHigh">Zu warm</span></div>
+            <div class="result-tip" id="resultTip">Chinchillas reagieren empfindlich auf Hitze. Bei Unsicherheit bitte fachkundigen Rat einholen.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-block" id="weightSection">
+        <div class="section-heading"><div><span class="eyebrow">03 · GESUNDHEIT</span><h2 id="weightTitle">Gewichtstagebuch</h2><p id="weightDesc">Regelmäßiges Wiegen hilft, Veränderungen früh zu erkennen.</p></div><span class="section-emoji">⚖️</span></div>
+        <div class="panel journal-panel">
+          <div class="form-row">
+            <div class="field grow"><label for="weightPet" id="weightPetLabel">Chinchilla</label><select id="weightPet"><option value="">Erst ein Profil anlegen</option></select></div>
+            <div class="field"><label for="weightInput" id="weightInputLabel">Gewicht (g)</label><input id="weightInput" type="number" min="1" max="3000" placeholder="z. B. 520" inputmode="numeric"></div>
+            <button class="primary-btn add-weight-btn" id="saveWeight">Eintrag speichern</button>
+          </div>
+          <div id="weightChart" class="weight-chart"><div class="chart-placeholder">Deine Gewichtseinträge erscheinen hier.</div></div>
+          <div id="weightHistory" class="history-list"></div>
+        </div>
+      </section>
+
+      <section class="section-block" id="tasksSection">
+        <div class="section-heading"><div><span class="eyebrow">04 · ALLTAG</span><h2 id="tasksTitle">Pflegeplan</h2><p id="tasksDesc">Kleine Routinen machen gute Pflege leichter.</p></div><button class="outline-btn" id="addTaskBtn">＋ Aufgabe</button></div>
+        <div class="panel task-panel">
+          <form id="taskForm" class="task-form"><input id="taskInput" maxlength="100" placeholder="z. B. Heu auffüllen" aria-label="Neue Pflegeaufgabe"><button class="primary-btn" type="submit">Hinzufügen</button></form>
+          <div id="taskList" class="task-list"></div>
+          <div id="emptyTasks" class="empty-small">Noch keine Aufgaben. Starte mit einer kleinen Routine.</div>
+        </div>
+      </section>
+
+      <section class="section-block knowledge-section">
+        <div class="section-heading"><div><span class="eyebrow">05 · WISSEN</span><h2 id="knowledgeTitle">Gut zu wissen</h2><p id="knowledgeDesc">Ein paar wichtige Grundlagen für jeden Tag.</p></div></div>
+        <div class="knowledge-grid">
+          <article class="knowledge-card"><span class="knowledge-icon">🌡️</span><h3 id="know1Title">Hitze ernst nehmen</h3><p id="know1Text">Chinchillas vertragen Wärme schlecht. Schatten, gute Belüftung und kühle Rückzugsorte sind wichtig. Nie in direkte Sonne stellen.</p></article>
+          <article class="knowledge-card"><span class="knowledge-icon">🌾</span><h3 id="know2Title">Heu und Wasser</h3><p id="know2Text">Frisches Heu sollte dauerhaft verfügbar sein. Trinkwasser täglich erneuern und Näpfe sowie Flaschen kontrollieren.</p></article>
+          <article class="knowledge-card"><span class="knowledge-icon">⚖️</span><h3 id="know3Title">Veränderungen bemerken</h3><p id="know3Text">Gewicht, Fressverhalten und Kot beobachten. Frisst ein Tier nicht oder wirkt apathisch, zeitnah einen chinchilla-kundigen Tierarzt kontaktieren.</p></article>
+        </div>
+      </section>
+    </main>
+
+    <footer><div class="footer-brand"><span class="brand-mark">✿</span><strong>ChinchiCare</strong></div><p id="footerText">Mit Liebe gemacht für kleine, besondere Persönlichkeiten.</p><small>© <span id="year"></span> ChinchiCare · <span id="localStatus">Daten werden auf diesem Gerät gespeichert</span></small></footer>
+  </div>
+
+  <dialog id="petDialog" class="modal">
+    <form id="petForm" method="dialog">
+      <div class="modal-head"><div><span class="eyebrow">DEIN TIER</span><h2 id="petDialogTitle">Profil erstellen</h2></div><button type="button" class="close-btn" id="closePetDialog" aria-label="Schließen">×</button></div>
+      <label class="photo-upload" for="petPhoto"><span id="photoPreview">🐭</span><strong id="photoUploadTitle">Foto hinzufügen</strong><small id="photoUploadHint">Optional · aus deiner Fotomediathek</small></label><input id="petPhoto" type="file" accept="image/*" hidden>
+      <div class="field"><label for="petName" id="petNameLabel">Name *</label><input id="petName" required maxlength="40" placeholder="z. B. Momo"></div>
+      <div class="form-row"><div class="field grow"><label for="petSex" id="petSexLabel">Geschlecht</label><select id="petSex"><option value="unknown">Unbekannt</option><option value="female">Weiblich</option><option value="male">Männlich</option></select></div><div class="field grow"><label for="petBirth" id="petBirthLabel">Geburtsdatum</label><input id="petBirth" type="date"></div></div>
+      <div class="field"><label for="petNotes" id="petNotesLabel">Notizen</label><textarea id="petNotes" rows="3" placeholder="Charakter, Vorlieben, Besonderheiten …"></textarea></div>
+      <div class="modal-actions"><button type="button" class="secondary-btn" id="cancelPet">Abbrechen</button><button class="primary-btn" type="submit" id="savePet">Profil speichern</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="cloudDialog" class="modal cloud-modal">
+    <form id="authForm" method="dialog">
+      <div class="modal-head"><div><span class="eyebrow">OPTIONAL · CLOUD</span><h2 id="authTitle">Deine Daten überall dabei</h2></div><button type="button" class="close-btn" id="closeCloudDialog" aria-label="Schließen">×</button></div>
+      <p id="authIntro">Erstelle ein kostenloses Konto, um deine Daten zwischen Geräten zu synchronisieren. Ohne Anmeldung bleibt ChinchiCare auf diesem Gerät nutzbar.</p>
+      <div class="field"><label for="authEmail">E-Mail</label><input id="authEmail" type="email" autocomplete="email" required placeholder="du@beispiel.de"></div>
+      <div class="field"><label for="authPassword" id="passwordLabel">Passwort</label><input id="authPassword" type="password" autocomplete="current-password" minlength="6" required placeholder="Mindestens 6 Zeichen"></div>
+      <div class="auth-actions"><button class="primary-btn full-btn" id="signInBtn" type="button">Anmelden</button><button class="secondary-btn full-btn" id="signUpBtn" type="button">Kostenlos registrieren</button></div>
+      <p class="auth-status" id="authStatus" aria-live="polite"></p><button type="button" class="text-btn hidden" id="signOutBtn">Abmelden</button>
+      <small id="authFootnote">Nutze nur dein eigenes Konto. Ein Passwort wird nicht von ChinchiCare gespeichert.</small>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <nav class="mobile-nav" aria-label="Hauptnavigation">
+    <a href="#petsSection"><span>♡</span><small id="navPets">Tiere</small></a><a href="#climateSection"><span>⌁</span><small id="navClimate">Klima</small></a><a href="#weightSection"><span>⚖</span><small id="navWeight">Gewicht</small></a><a href="#tasksSection"><span>✓</span><small id="navTasks">Pflege</small></a>
+  </nav>
+  <script src="app.js"></script>
+</body>
+</html>
