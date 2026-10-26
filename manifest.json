@@ -1,0 +1,17 @@
+{
+  "name": "ChinchiCare",
+  "short_name": "ChinchiCare",
+  "description": "Pflege, Raumklima und Gesundheitsjournal f\u00fcr Chinchillas",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f7f3ec",
+  "theme_color": "#557665",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
