@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#fff7fa">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="ChinchiCare">
+<meta name="description" content="Dein liebevoller Chinchilla-Begleiter.">
+<title>ChinchiCare</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<section class="auth-screen" id="authScreen" aria-label="Login">
+  <div class="auth-language">
+    <label for="languageSelect" data-i18n="language">Sprache</label>
+    <select id="languageSelect" aria-label="Language">
+      <option value="de">🇩🇪 Deutsch</option>
+      <option value="en">🇬🇧 English</option>
+      <option value="zh">🇨🇳 中文</option>
+    </select>
+  </div>
+  <div class="auth-card">
+    <div class="auth-mascot">🐭<span>♡</span></div>
+    <p class="eyebrow" data-i18n="welcomeSmall">DEIN KLEINES FLAUSCH-ZUHAUSE</p>
+    <h1 data-i18n="welcome">Willkommen bei ChinchiCare</h1>
+    <p class="subhead" data-i18n="welcomeDesc">Liebevolle Pflege für deine kleinen Flausch-Wesen.</p>
+    <div class="auth-tabs">
+      <button class="auth-tab active" data-auth-tab="login" data-i18n="login">Anmelden</button>
+      <button class="auth-tab" data-auth-tab="register" data-i18n="register">Konto erstellen</button>
+    </div>
+    <form id="authForm">
+      <label for="authName" id="nameLabel" data-i18n="yourName" hidden>Dein Name</label>
+      <input id="authName" autocomplete="name" placeholder="Dein Name" hidden>
+      <label for="authEmail" data-i18n="email">E-Mail-Adresse</label>
+      <input id="authEmail" type="email" autocomplete="email" placeholder="name@example.com" required>
+      <label for="authPassword" data-i18n="password">Passwort</label>
+      <input id="authPassword" type="password" autocomplete="current-password" placeholder="Mindestens 6 Zeichen" minlength="6" required>
+      <button class="main-cta auth-submit" type="submit" data-i18n="continue">Weiter</button>
+      <p class="auth-note" data-i18n="localNote">Demo-Anmeldung auf diesem Gerät. Noch kein sicherer Online-Account.</p>
+    </form>
+    <button class="guest-button" id="guestButton" data-i18n="guest">Ohne Konto fortfahren</button>
+  </div>
+</section>
+
+<div class="app-shell" id="mainApp" hidden>
+  <header class="app-header">
+    <a class="brand" href="#home" aria-label="ChinchiCare Start">
+      <span class="brand-icon">🐭</span><span class="brand-text"><b>ChinchiCare</b><small>little paws, big love</small></span>
+    </a>
+    <button class="round-button" id="themeButton" aria-label="Farbschema wechseln">☼</button>
+  </header>
+
+  <main>
+    <section class="screen active" id="screen-home" data-screen="home">
+      <div class="home-language"><label for="mainLanguageSelect" data-i18n="language">Sprache</label><select id="mainLanguageSelect" aria-label="App language"><option value="de">🇩🇪 Deutsch</option><option value="en">🇬🇧 English</option><option value="zh">🇨🇳 中文</option></select></div>
+
+      <div class="hello-row"><div><p class="eyebrow">DIENSTAG, DEIN FLAUSCH-MOMENT</p><h1>Hallo, du! <span class="wave">♡</span></h1><p class="subhead">Machen wir den Tag ein bisschen süßer.</p></div><div class="streak-chip"><span>🌷</span><b id="streak">0/4</b></div></div>
+      <article class="hero-card">
+        <div class="hero-copy"><span class="mini-pill"><i></i> DEIN KLEINER BEGLEITER</span><h2>Ein bisschen<br><em>Liebe</em> jeden Tag.</h2><p>Für glückliche Pfötchen und ein gemütliches Zuhause.</p><button class="main-cta" data-go="routine">Routine starten <span>↗</span></button></div>
+        <div class="pet-stage" id="petStage" role="button" tabindex="0" aria-label="Mochi begrüßen">
+          <div class="pet-glow"></div><span class="pet-star star1">✦</span><span class="pet-star star2">✧</span><span class="pet-heart">♥</span>
+          <div class="pet" id="pet">
+            <div class="pet-ear left"><i></i></div><div class="pet-ear right"><i></i></div>
+            <div class="pet-body"></div><div class="pet-belly"></div><div class="pet-cheek left"></div><div class="pet-cheek right"></div>
+            <div class="pet-eye left"></div><div class="pet-eye right"></div><div class="pet-nose"></div><div class="pet-smile"></div><div class="pet-paw left"></div><div class="pet-paw right"></div>
+          </div>
+          <div class="pet-name">Mochi <span>♡</span></div>
+        </div>
+      </article>
+      <div class="section-title"><div><span class="eyebrow">DEIN ÜBERBLICK</span><h2>Heute für dich</h2></div><span class="cloud-icon">☁️</span></div>
+      <div class="summary-grid">
+        <button class="summary-card pink" data-go="routine"><span class="summary-icon">♡</span><span><b id="summaryDone">0 erledigt</b><small>Deine Routine</small></span><span class="summary-arrow">›</span></button>
+        <button class="summary-card lilac" data-go="care"><span class="summary-icon">🌿</span><span><b>Pflegewissen</b><small>Kleine Tipps entdecken</small></span><span class="summary-arrow">›</span></button>
+      </div>
+      <article class="quote-card"><span class="quote-spark">✦</span><span class="quote-icon">💌</span><div><small>EIN GEDANKE FÜR DICH</small><p id="dailyQuote">Du musst nicht alles auf einmal schaffen. Kleine Schritte zählen.</p></div><button id="newQuote" aria-label="Anderen Gedanken anzeigen">↻</button></article>
+    <div class="coat-picker-card">
+        <div class="coat-heading"><div><span class="eyebrow" data-i18n="coatEyebrow">MEIN FLAUSCH-FREUND</span><h2 data-i18n="coatTitle">Welche Farbe hat dein Chinchilla?</h2></div><span class="coat-heart">♡</span></div>
+        <div class="animated-chin" id="animatedChin" data-coat="standard" role="img" aria-label="Animated chinchilla mascot">
+          <div class="chin-shadow"></div><div class="chin-tail"></div><div class="chin-body"></div><div class="chin-ear ear-left"></div><div class="chin-ear ear-right"></div><div class="chin-head"></div><div class="chin-patch"></div><div class="chin-eye eye-left"></div><div class="chin-eye eye-right"></div><div class="chin-nose"></div><div class="chin-cheek cheek-left"></div><div class="chin-cheek cheek-right"></div><div class="chin-whisker whisker-left"></div><div class="chin-whisker whisker-right"></div><div class="chin-foot foot-left"></div><div class="chin-foot foot-right"></div><span class="chin-sparkle">✦</span>
+        </div>
+        <div class="coat-options" role="group" aria-label="Chinchilla coat colour">
+          <button class="coat-option selected" data-coat="standard"><span class="coat-swatch standard"></span><span data-i18n="coatStandard">Standardgrau</span></button>
+          <button class="coat-option" data-coat="white"><span class="coat-swatch white"></span><span data-i18n="coatWhite">Weiß / Wilson</span></button>
+          <button class="coat-option" data-coat="beige"><span class="coat-swatch beige"></span><span data-i18n="coatBeige">Beige</span></button>
+          <button class="coat-option" data-coat="black"><span class="coat-swatch black"></span><span data-i18n="coatBlack">Black Velvet</span></button>
+          <button class="coat-option" data-coat="violet"><span class="coat-swatch violet"></span><span data-i18n="coatViolet">Violett</span></button>
+          <button class="coat-option" data-coat="sapphire"><span class="coat-swatch sapphire"></span><span data-i18n="coatSapphire">Saphir</span></button>
+          <button class="coat-option" data-coat="ebony"><span class="coat-swatch ebony"></span><span data-i18n="coatEbony">Ebony</span></button>
+          <button class="coat-option" data-coat="pinkwhite"><span class="coat-swatch pinkwhite"></span><span data-i18n="coatPinkwhite">Pink White</span></button>
+        </div>
+        <p class="fine-print" data-i18n="coatNote">Die Zeichnung ist eine stilisierte Animation, keine exakte Darstellung jeder Fellvariante.</p>
+      </div></section>
+
+    <section class="screen" id="screen-routine" data-screen="routine">
+      <div class="page-heading"><span class="eyebrow">EIN SCHRITT NACH DEM ANDEREN</span><h1>Deine Routine <span>🌷</span></h1><p class="subhead">Jeder Haken ist ein kleiner Liebesbeweis.</p></div>
+      <article class="progress-card"><div class="progress-head"><div><b id="progressTitle">Du schaffst das!</b><small id="progressSubtitle">Ganz in deinem Tempo.</small></div><strong id="progressPercent">0%</strong></div><div class="progress-track"><span id="progressFill"></span></div><div class="progress-meta"><span>🐾 Flausch-Fortschritt</span><b id="progressCount">0 von 4</b></div></article>
+      <div class="routine-list">
+        <label class="routine-item"><input type="checkbox" data-task="hay"><span class="task-icon hay">🌾</span><span class="task-text"><b>Frisches Heu prüfen</b><small>Immer genug Heu zur Verfügung stellen.</small></span><span class="checkmark">✓</span></label>
+        <label class="routine-item"><input type="checkbox" data-task="water"><span class="task-icon water">💧</span><span class="task-text"><b>Wasser erneuern</b><small>Sauber, frisch und gut erreichbar.</small></span><span class="checkmark">✓</span></label>
+        <label class="routine-item"><input type="checkbox" data-task="home"><span class="task-icon home">🧹</span><span class="task-text"><b>Gehege kurz ansehen</b><small>Sicherheit, Sauberkeit und Rückzugsorte.</small></span><span class="checkmark">✓</span></label>
+        <label class="routine-item"><input type="checkbox" data-task="hello"><span class="task-icon hello">💗</span><span class="task-text"><b>Ruhiger Hallo-Moment</b><small>In ihrem Tempo, ohne Festhalten.</small></span><span class="checkmark">✓</span></label>
+      </div>
+      <p class="fine-print">Die Liste ist eine Alltagserinnerung und ersetzt keine tierärztliche Beratung.</p>
+      <button class="wide-soft" id="resetRoutine">Routine zurücksetzen <span>↻</span></button>
+    </section>
+
+    <section class="screen" id="screen-moments" data-screen="moments">
+      <div class="page-heading"><span class="eyebrow">KLEINE FREUDE FÜR ZWISCHENDURCH</span><h1>Flausch-Momente <span>✨</span></h1><p class="subhead">Ein bisschen Zauber für deinen Tag.</p></div>
+      <button class="moment-feature" id="heartRain"><span class="moment-art hearts">💞</span><span class="moment-text"><b>Herz-Regen</b><small>Eine ganze Wolke voller Liebe</small></span><span class="moment-chevron">↗</span></button>
+      <button class="moment-feature" id="boop"><span class="moment-art mochi-art">🐭</span><span class="moment-text"><b>Nasenstupser</b><small>Mochi freut sich auf einen Boop</small></span><span class="moment-chevron">↗</span></button>
+      <button class="moment-feature" id="surprise"><span class="moment-art gift-art">🎀</span><span class="moment-text"><b>Kleine Überraschung</b><small>Tippe und lass dich überraschen</small></span><span class="moment-chevron">↗</span></button>
+      <div class="breath-card"><div class="breath-orb" id="breathOrb"><span>♡</span></div><div><b>Einmal tief durchatmen</b><p>Atme langsam ein, dann langsam aus. Du darfst kurz Pause machen.</p><button class="text-button" id="breathe">Kleine Pause starten <span>→</span></button></div></div>
+    </section>
+
+    <section class="screen" id="screen-care" data-screen="care">
+      <div class="page-heading"><span class="eyebrow">FÜRSORGE BEGINNT MIT WISSEN</span><h1>Pflegewissen <span>🌱</span></h1><p class="subhead">Kleine Erinnerungen für ein gutes Chinchilla-Leben.</p></div>
+      <article class="care-feature"><div class="care-illustration">🌡️<span>❄️</span></div><div><span class="mini-pill">WICHTIG</span><h2>Cool bleiben</h2><p>Chinchillas reagieren empfindlich auf Hitze. Achte auf eine kühle, gut belüftete Umgebung und informiere dich über geeignete Haltungsbedingungen.</p></div></article>
+      <div class="care-tip"><span>🌾</span><div><b>Heu ist wichtig</b><p>Hochwertiges Heu sollte als zentraler Bestandteil der Ernährung immer verfügbar sein.</p></div></div>
+      <div class="care-tip"><span>🪵</span><div><b>Sicher knabbern</b><p>Biete nur geeignete, unbehandelte und für Chinchillas sichere Materialien an.</p></div></div>
+      <div class="care-tip"><span>🤍</span><div><b>Vertrauen braucht Zeit</b><p>Bewege dich ruhig und lass die Tiere Kontakt freiwillig aufnehmen.</p></div></div>
+      <p class="fine-print">Allgemeine Hinweise, keine individuelle tiermedizinische Beratung. Bei Auffälligkeiten bitte eine chinchilla-kundige Tierarztpraxis kontaktieren.</p>
+    </section>
+
+    <section class="screen" id="screen-profile" data-screen="profile">
+      <div class="page-heading"><span class="eyebrow">DEIN KLEINES FLAUSCH-ZUHAUSE</span><h1>Einstellungen <span>🫧</span></h1><p class="subhead">Mach ChinchiCare zu deinem Wohlfühlort.</p></div>
+      <article class="profile-card"><div class="profile-avatar">🐭</div><div><b>Hallo, Flausch-Freund!</b><p>Deine Routine wird nur auf diesem Gerät gespeichert.</p></div></article>
+      <button class="setting-row" id="settingTheme"><span class="setting-icon">🌙</span><span><b>Abendmodus</b><small>Sanfte Farben für später</small></span><span class="setting-value" id="themeStatus">Aus</span></button>
+      <button class="setting-row" id="settingMotion"><span class="setting-icon">✨</span><span><b>Animationen</b><small>Bewegungen und Glitzer</small></span><span class="setting-value" id="motionStatus">An</span></button>
+      <button class="setting-row" id="clearData"><span class="setting-icon">🧺</span><span><b>Routine zurücksetzen</b><small>Haken für heute entfernen</small></span><span class="setting-value">›</span></button>
+      <button class="wide-soft" id="logoutButton" data-i18n="logout">Abmelden</button><div class="about-card"><span>🐾</span><div><b>ChinchiCare</b><p>Mit Liebe für kleine Flausch-Wesen gemacht.</p><small>Version 2.0 · Mobile Edition</small></div></div>
+    </section>
+
+    <section class="screen" id="screen-more" data-screen="more">
+    <div class="page-heading"><span class="eyebrow" data-i18n="moreEyebrow">DEIN ÜBERBLICK</span><h1 data-i18n="moreTitle">Weitere Bereiche <span>✦</span></h1><p class="subhead" data-i18n="moreSub">Alle Werkzeuge und Inhalte an einem Ort.</p></div>
+    <div class="more-grid">
+      <button class="more-link" data-open-screen="care"><span>♡</span><b data-i18n="moreCare">Pflege & Alltag</b><small data-i18n="moreCareDesc">Routine, Fellpflege und Sicherheit</small><i>›</i></button>
+      <button class="more-link" data-open-screen="knowledge"><span>📚</span><b data-i18n="moreKnowledge">Wissensbibliothek</b><small data-i18n="moreKnowledgeDesc">Ernährung, Gesundheit, Verhalten</small><i>›</i></button>
+      <button class="more-link" data-open-screen="cage"><span>🏡</span><b data-i18n="moreCage">Gehege-Rechner</b><small data-i18n="moreCageDesc">Fläche und Höhe berechnen</small><i>›</i></button>
+      <button class="more-link" data-open-screen="temperature"><span>🌡️</span><b data-i18n="moreTemp">Temperatur-Check</b><small data-i18n="moreTempDesc">Raumtemperatur und Warnstufen</small><i>›</i></button>
+      <button class="more-link" data-open-screen="moments"><span>✧</span><b data-i18n="moreMoments">Flausch-Momente</b><small data-i18n="moreMomentsDesc">Kleine Animationen und Wohlfühlzeit</small><i>›</i></button>
+      <button class="more-link" data-open-screen="profile"><span>⚙</span><b data-i18n="moreSettings">Profil & Einstellungen</b><small data-i18n="moreSettingsDesc">Profil, Darstellung und Abmeldung</small><i>›</i></button>
+    </div>
+    <div class="settings-language"><label for="moreLanguageSelect" data-i18n="language">Sprache</label><select id="moreLanguageSelect"><option value="de">🇩🇪 Deutsch</option><option value="en">🇬🇧 English</option><option value="zh">🇨🇳 中文</option></select></div>
+  </section>
+\n<section class="screen" id="screen-knowledge" data-screen="knowledge">
+      <div class="page-heading"><span class="eyebrow" data-i18n="knowledgeEyebrow">GUT INFORMIERT, GUT GESORGT</span><h1 data-i18n="knowledgeTitle">Das große Chinchilla-Wissen <span>📚</span></h1><p class="subhead" data-i18n="knowledgeSub">Ein praktischer Überblick für ein gesundes, sicheres Chinchilla-Leben.</p></div>
+      <div class="knowledge-grid">
+        <article class="knowledge-card"><span>🌾</span><h2 data-i18n="foodTitle">Ernährung</h2><p data-i18n="foodText">Hochwertiges Heu muss ständig verfügbar sein. Frisches Wasser täglich erneuern. Pellets nur als geeignete, portionierte Ergänzung. Zucker, Obst, Nüsse, Samen und ungeeignete Knabberstangen vermeiden.</p></article>
+        <article class="knowledge-card"><span>🪵</span><h2 data-i18n="chewTitle">Zähne und Knabbern</h2><p data-i18n="chewText">Die Zähne wachsen lebenslang. Heu und geeignete sichere Zweige unterstützen den natürlichen Abrieb. Fressunlust, Speicheln oder Gewichtsverlust sind Warnzeichen und gehören zeitnah tierärztlich abgeklärt.</p></article>
+        <article class="knowledge-card"><span>🛁</span><h2 data-i18n="bathTitle">Sandbad und Fell</h2><p data-i18n="bathText">Nur speziellen Chinchilla-Badesand verwenden, kein Wasserbad. Das Sandbad passend anbieten und bei übermäßiger Nutzung oder Hautproblemen tierärztlichen Rat einholen.</p></article>
+        <article class="knowledge-card"><span>🧸</span><h2 data-i18n="behaviorTitle">Verhalten und Vertrauen</h2><p data-i18n="behaviorText">Chinchillas sind meist dämmerungsaktiv, bewegungsfreudig und soziale Tiere. Ruhig sprechen, Kontakt freiwillig entstehen lassen und niemals am Schwanz festhalten.</p></article>
+        <article class="knowledge-card"><span>🩺</span><h2 data-i18n="healthTitle">Gesundheit und Warnzeichen</h2><p data-i18n="healthText">Täglich Fressen, Kot, Aktivität und Atmung beobachten. Nicht fressen, kaum Kot, aufgeblähter Bauch, Atemnot, starke Schwäche oder Überhitzungszeichen sind dringend. Eine chinchilla-kundige Tierarztpraxis kontaktieren.</p></article>
+        <article class="knowledge-card"><span>🧹</span><h2 data-i18n="cleanTitle">Hygiene und Sicherheit</h2><p data-i18n="cleanText">Täglich Futterreste und verschmutzte Stellen entfernen, Wassergefäße reinigen und Rückzugsorte anbieten. Kabel, giftige Pflanzen, Plastik zum Anknabbern und Stürze aus großer Höhe verhindern.</p></article>
+        <article class="knowledge-card"><span>🌙</span><h2 data-i18n="nightTitle">Aktivität und Beschäftigung</h2><p data-i18n="nightText">Sichere Ebenen, Verstecke und wechselnde Beschäftigung bieten. Freilauf nur in einem vollständig gesicherten Raum und unter Aufsicht. Keine Laufräder mit Gittersprossen oder unsicherem Durchmesser.</p></article>
+        <article class="knowledge-card"><span>🐾</span><h2 data-i18n="socialTitle">Sozialhaltung</h2><p data-i18n="socialText">Chinchillas sollten grundsätzlich mit passenden Artgenossen gehalten werden. Vergesellschaftung braucht Planung, ausreichend Platz und Beobachtung; bei Kämpfen oder Verletzungen fachkundige Hilfe suchen.</p></article>
+      </div>
+      <div class="knowledge-deep">
+        <h2 data-i18n="deepTitle">Wissen im Detail</h2>
+        <details open><summary data-i18n="deepHousingTitle">Gehege richtig einrichten</summary><p data-i18n="deepHousingText">Plane eine große, gut belüftete Grundfläche mit stabilen, rutschfesten Ebenen, sicheren Rampen und mehreren Verstecken. Nutze unbehandeltes, geeignetes Holz und sichere Befestigungen. Vermeide Gitterböden, scharfkantige Teile, enge Spalten und große Fallhöhen. Das Gehege darf nicht in direkter Sonne oder neben Heizkörpern stehen.</p></details>
+        <details><summary data-i18n="deepDietTitle">Futterwechsel und tägliche Fütterung</summary><p data-i18n="deepDietText">Heu ist die Basis und sollte sauber, trocken und jederzeit erreichbar sein. Futterumstellungen langsam durchführen und neue Pflanzen oder Zweige nur nach Prüfung auf Eignung und Schadstofffreiheit anbieten. Wasser täglich wechseln und Napf oder Flasche reinigen. Leckerlis sind kein Ersatz für Raufutter; vermeide abrupte Ernährungsänderungen.</p></details>
+        <details><summary data-i18n="deepHeatTitle">Hitze vermeiden</summary><p data-i18n="deepHeatText">Miss die Temperatur auf Höhe des Tieres und prüfe auch am Nachmittag, wenn sich Räume aufheizen. Schattiere Fenster, nutze sichere Luftzirkulation und kühle den Raum frühzeitig. Kühlplatten müssen sicher und nicht eiskalt sein; das Tier muss ausweichen können. Keine nassen Handtücher über das Tier legen und keine direkte kalte Luft auf den Käfig richten.</p></details>
+        <details><summary data-i18n="deepVetTitle">Tierarzt und Vorsorge</summary><p data-i18n="deepVetText">Suche vor einem Notfall eine Praxis mit Erfahrung bei exotischen Heimtieren. Beobachte Gewicht möglichst regelmäßig unter ähnlichen Bedingungen und notiere Appetit, Kotmenge, Verhalten und Auffälligkeiten. Bei Fressstopp, deutlich weniger Kot, Atemnot, Verletzung, aufgeblähtem Bauch oder neurologischen Auffälligkeiten nicht abwarten.</p></details>
+        <details><summary data-i18n="deepBondTitle">Vertrauen aufbauen</summary><p data-i18n="deepBondText">Lass das Tier in seinem Tempo näherkommen. Setze dich ruhig in die Nähe, sprich leise und biete die Hand zum Beschnuppern an. Vermeide Jagen, Festhalten und Hochheben ohne Notwendigkeit. Bei notwendiger Handhabung Körper und Hinterbeine gut stützen. Kinder sollten nur unter direkter Aufsicht Kontakt haben.</p></details>
+      </div>
+      <p class="fine-print" data-i18n="knowledgeDisclaimer">Diese Informationen sind allgemeine Orientierung und ersetzen keine Beratung durch eine auf Heimtiere spezialisierte Tierarztpraxis oder seriöse Fachberatung.</p>
+    </section>
+
+    <section class="screen" id="screen-cage" data-screen="cage">
+      <div class="page-heading"><span class="eyebrow" data-i18n="cageEyebrow">PLATZ ZUM SPRINGEN</span><h1 data-i18n="cageTitle">Käfig- & Gehegegröße <span>🏡</span></h1><p class="subhead" data-i18n="cageSub">Berechne die Grundfläche und prüfe die Mindestorientierung für zwei Chinchillas.</p></div>
+      <article class="tool-card">
+        <label for="cageWidth" data-i18n="widthCm">Breite (cm)</label><input id="cageWidth" type="number" min="1" value="160" inputmode="numeric">
+        <label for="cageDepth" data-i18n="depthCm">Tiefe (cm)</label><input id="cageDepth" type="number" min="1" value="80" inputmode="numeric">
+        <label for="cageHeight" data-i18n="heightCm">Höhe (cm)</label><input id="cageHeight" type="number" min="1" value="150" inputmode="numeric">
+        <label for="cageCount" data-i18n="animalCount">Anzahl Chinchillas</label><select id="cageCount"><option value="2">2</option><option value="3">3</option><option value="4">4</option></select>
+        <div class="tool-result" id="cageResult" aria-live="polite"></div>
+      </article>
+      <div class="care-tip"><span>📏</span><div><b data-i18n="cageAdviceTitle">Wichtig zur Größe</b><p data-i18n="cageAdvice">Als grobe Orientierung werden für zwei Chinchillas häufig mindestens etwa 3 m² Grundfläche und ausreichend Höhe mit mehreren Ebenen empfohlen. Anforderungen können je nach Land und Tierschutzleitlinie abweichen. Mehr Platz ist besser; Ebenen ersetzen keine nutzbare Grundfläche.</p></div></div>
+    </section>
+
+    <section class="screen" id="screen-temperature" data-screen="temperature">
+      <div class="page-heading"><span class="eyebrow" data-i18n="tempEyebrow">HITZE IM BLICK BEHALTEN</span><h1 data-i18n="tempTitle">Temperatur-Check <span>🌡️</span></h1><p class="subhead" data-i18n="tempSub">Chinchillas sind hitzeempfindlich. Miss die Temperatur direkt am Gehege.</p></div>
+      <article class="tool-card">
+        <label for="roomTemp" data-i18n="currentTemp">Aktuelle Raumtemperatur (°C)</label><input id="roomTemp" class="temp-slider" type="range" min="10" max="35" step="0.5" value="20"><output id="roomTempValue" for="roomTemp">20 °C</output>
+        <label for="humidity" data-i18n="humidity">Luftfeuchtigkeit (%) optional</label><input id="humidity" type="number" min="0" max="100" value="50" inputmode="numeric">
+        <button class="main-cta" id="checkTemp" data-i18n="checkNow">Temperatur prüfen</button>
+        <div class="temp-result" id="tempResult" aria-live="polite"></div>
+      </article>
+      <div class="temp-scale"><div><span class="temp-dot cool"></span><b data-i18n="tempCool">Kühl</b><small data-i18n="tempCoolDesc">Unter etwa 18 °C: auf Zugluft und Komfort achten.</small></div><div><span class="temp-dot good"></span><b data-i18n="tempGood">Vorsichtiger Zielbereich</b><small data-i18n="tempGoodDesc">Etwa 18–21 °C ist eine häufig empfohlene Orientierung.</small></div><div><span class="temp-dot warm"></span><b data-i18n="tempWarm">Wärmer</b><small data-i18n="tempWarmDesc">Ab etwa 22 °C genau beobachten und aktiv kühlen.</small></div><div><span class="temp-dot danger"></span><b data-i18n="tempDanger">Gefährlich</b><small data-i18n="tempDangerDesc">Ab etwa 25 °C steigt das Risiko deutlich. Sofort für sichere Abkühlung sorgen.</small></div></div>
+      <p class="fine-print" data-i18n="tempDisclaimer">Die Grenzen sind vorsichtige Orientierung, keine Garantie für Sicherheit. Luftfeuchtigkeit, Luftbewegung, direkte Sonne und das einzelne Tier beeinflussen das Risiko. Bei Hecheln, Speicheln, Schwäche, Taumeln oder Atemproblemen sofort tierärztliche Hilfe holen und in eine kühlere Umgebung bringen. Keine plötzliche Eis- oder Kältebehandlung.</p>
+    </section>
+
+  </main>
+
+  <nav class="bottom-nav" aria-label="Main navigation">
+    <button class="nav-item active" data-tab="home"><span class="nav-icon">⌂</span><small data-i18n="navHome">Start</small></button>
+    <button class="nav-item" data-tab="routine"><span class="nav-icon">☑</span><small data-i18n="navRoutine">Routine</small></button>
+    <button class="nav-item" data-tab="moments"><span class="nav-icon nav-spark">✧</span><small data-i18n="navMoments">Momente</small></button>
+    <button class="nav-item" data-tab="more"><span class="nav-icon">☷</span><small data-i18n="navMore">Mehr</small></button>
+  </nav>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div><div class="particles" id="particles" aria-hidden="true"></div>
+<script src="app.js"></script>
+<script src="extra.js"></script>
+<script src="polish.js"></script>
+<script src="quality.js"></script>
+</body>
+</html>
