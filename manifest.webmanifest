@@ -1,0 +1,11 @@
+{
+  "name": "ChinchiCare",
+  "short_name": "ChinchiCare",
+  "description": "Dein liebevoller Chinchilla-Begleiter",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fff8fb",
+  "theme_color": "#fff7fa",
+  "orientation": "portrait"
+}
